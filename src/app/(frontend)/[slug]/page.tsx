@@ -7,11 +7,14 @@ import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
 
+import { HeroBannner } from '@/blocks/HeroBannner/Component'
+import { CouldHTBRFY } from '@/blocks/CouldHTBRFY/Component'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { WhyChooseUsBlock } from '@/blocks/WhyChooseUs/Component';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -74,6 +77,10 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
+      {/* {decodedSlug === 'home' && <HeroBannner />} */}
+      <HeroBannner />
+      <WhyChooseUsBlock />
+      <CouldHTBRFY />
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>

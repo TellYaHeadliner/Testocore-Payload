@@ -8,7 +8,7 @@ import { MediumImpactHero } from '@/heros/MediumImpact'
 
 const heroes = {
   highImpact: HighImpactHero,
-  lowImpact: LowImpactHero,
+  // lowImpact: LowImpactHero,
   mediumImpact: MediumImpactHero,
 }
 
