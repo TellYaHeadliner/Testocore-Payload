@@ -15,6 +15,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { WhyChooseUsBlock } from '@/blocks/WhyChooseUs/Component';
+import { ReviewBlock } from '@/blocks/ReviewBlock/Component';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -81,6 +82,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <HeroBannner />
       <WhyChooseUsBlock />
       <CouldHTBRFY />
+      <ReviewBlock />
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>
