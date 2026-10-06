@@ -16,6 +16,9 @@ import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { WhyChooseUsBlock } from '@/blocks/WhyChooseUs/Component';
 import { ReviewBlock } from '@/blocks/ReviewBlock/Component';
+import { HowWDHI } from '@/blocks/HowWDHI/Component';
+import { Component_1 } from '@/blocks/ContentBlock/Component_1';
+
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -83,6 +86,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       <WhyChooseUsBlock />
       <CouldHTBRFY />
       <ReviewBlock />
+      <Component_1 />
+      <HowWDHI />
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>
