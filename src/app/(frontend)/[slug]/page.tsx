@@ -20,6 +20,7 @@ import { HowWDHI } from '@/blocks/HowWDHI/Component';
 import { Component_1 } from '@/blocks/ContentBlock/Component_1';
 import CTA_1 from '@/blocks/CTA/Component_1';
 import { FAQBlock } from '@/blocks/FAQBlock/Component';
+import { CTABlueBg } from '@/blocks/CTABlueBgBlock/Component';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -91,6 +92,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <HowWDHI />
       <CTA_1 />
       <FAQBlock />
+      <CTABlueBg />
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>

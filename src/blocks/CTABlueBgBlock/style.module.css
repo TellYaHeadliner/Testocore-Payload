@@ -1,0 +1,10 @@
+.section {
+  position: relative;
+  display: grid;
+  min-height: 600px;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(32px, 7vw, 120px) 24px;
+  background: linear-gradient(180deg, #3798C0 0%, #2F83A6 100%);
+}
+
