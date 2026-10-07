@@ -18,7 +18,8 @@ import { WhyChooseUsBlock } from '@/blocks/WhyChooseUs/Component';
 import { ReviewBlock } from '@/blocks/ReviewBlock/Component';
 import { HowWDHI } from '@/blocks/HowWDHI/Component';
 import { Component_1 } from '@/blocks/ContentBlock/Component_1';
-
+import CTA_1 from '@/blocks/CTA/Component_1';
+import { FAQBlock } from '@/blocks/FAQBlock/Component';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -88,6 +89,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       <ReviewBlock />
       <Component_1 />
       <HowWDHI />
+      <CTA_1 />
+      <FAQBlock />
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>

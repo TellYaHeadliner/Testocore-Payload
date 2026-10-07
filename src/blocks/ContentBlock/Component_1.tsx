@@ -38,12 +38,12 @@ export const Component_1 = () => {
         <div className="flex min-w-0 flex-1 flex-col items-start gap-10">
           <div className="flex w-full flex-col items-center gap-5">
             <p
-              className={`${kanit.className} m-0 w-full text-center text-sm leading-[14px] font-semibold tracking-[2px] text-[#0070a8] uppercase`}
+              className={`${kanit.className} text-left m-0 w-full text-center text-sm leading-[14px] font-semibold tracking-[2px] text-[#0070a8] uppercase`}
             >
               How it works
             </p>
             <h2
-              className={`${kantumruyPro.className} m-0 w-full text-center text-[clamp(36px,4vw,45px)] leading-[1.16] font-bold text-black`}
+              className={`${kantumruyPro.className} text-left m-0 w-full text-center text-[clamp(36px,4vw,45px)] leading-[1.16] font-bold text-black`}
             >
               What to Expect
             </h2>

@@ -1,0 +1,86 @@
+.section {
+  position: relative;
+  display: grid;
+  min-height: 600px;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(32px, 7vw, 120px) 24px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(100%, 1200px);
+  min-height: clamp(360px, 34vw, 528px);
+  overflow: hidden;
+  border-radius: 28px;
+  background: #3795b8;
+}
+
+.visual {
+  min-width: 0;
+  min-height: 100%;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(28px, 4vw, 52px);
+  padding: clamp(28px, 5vw, 72px);
+}
+
+.heading {
+  display: flex;
+  width: min(100%, 410px);
+  flex-direction: column;
+  gap: 12px;
+}
+
+.headingLine,
+.headingLineShort {
+  display: block;
+  width: 100%;
+  height: clamp(14px, 1.8vw, 26px);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.headingLineShort {
+  width: 58%;
+  background: rgba(12, 54, 83, 0.62);
+}
+
+.button {
+  display: block;
+  width: min(100%, 280px);
+  height: 44px;
+  border-radius: 12px;
+  background: #e85b0a;
+}
+
+@media (max-width: 680px) {
+  .section {
+    min-height: auto;
+    padding: 40px 18px;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(180px, 42vw) auto;
+    min-height: 0;
+    border-radius: 20px;
+  }
+
+  .content {
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .heading {
+    gap: 10px;
+  }
+}
