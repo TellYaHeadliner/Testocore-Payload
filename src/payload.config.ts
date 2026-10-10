@@ -14,6 +14,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { FixedToolbarFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -56,15 +57,17 @@ export default buildConfig({
     },
   },
   // This config helps us configure global or default features that the other editors can inherit
-  editor: defaultLexical,
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
-    
+    connectOptions: {
+      maxPoolSize: 5,       // tương đương pool.max
+      maxIdleTimeMS: 10000, // tương đương pool.idleTimeoutMillis
+    },
   }),
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
-  plugins,
+  plugins, // Sẽ thêm vercelBlob trong tương lai
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
@@ -88,4 +91,13 @@ export default buildConfig({
     },
     tasks: [],
   },
+
+  // Editor
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(),
+      InlineToolbarFeature(),
+    ],
+  }),
 })
