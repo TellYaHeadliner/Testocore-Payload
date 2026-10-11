@@ -5,12 +5,10 @@ import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { HeroBannner } from '@/blocks/HeroBannner/Component'
 import { CouldHTBRFY } from '@/blocks/CouldHTBRFY/Component'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
@@ -64,16 +62,12 @@ export default async function Page({ params: paramsPromise }: Args) {
     slug: decodedSlug,
   })
 
-  // Remove this code once your website is seeded
-  if (!page && slug === 'home') {
-    page = homeStatic
-  }
+
 
   if (!page) {
     return <PayloadRedirects url={url} />
   }
 
-  const { hero, layout } = page
 
   return (
     <article>
@@ -93,8 +87,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <CTA_1 />
       <FAQBlock />
       <CTABlueBg />
-      <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+      {/* <RenderBlocks blocks={layout} /> */}
     </article>
   )
 }
