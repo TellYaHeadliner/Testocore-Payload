@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
+import { HeroBannner } from './HeroBannner/Component';
 
 
 const blockComponents = {
-  
+  heroBanner: HeroBannner
 }
 
 export const RenderBlocks: React.FC<{

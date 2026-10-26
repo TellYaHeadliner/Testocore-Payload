@@ -161,9 +161,30 @@ export interface Page {
    * Auto-generated from the title if left blank.
    */
   slug: string;
+  layout?: HeroBannerBlock[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBannerBlock".
+ */
+export interface HeroBannerBlock {
+  smallDescription?: string | null;
+  title: string;
+  showBlueTitle?: boolean | null;
+  blueTitle?: string | null;
+  description?: string | null;
+  buttonLink?: {
+    hasButtonLink?: boolean | null;
+    titleButton?: string | null;
+    link?: string | null;
+  };
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero-banner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -771,9 +792,35 @@ export interface PagesSelect<T extends boolean = true> {
   title?: T;
   publishedAt?: T;
   slug?: T;
+  layout?:
+    | T
+    | {
+        'hero-banner'?: T | HeroBannerBlockSelect<T>;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBannerBlock_select".
+ */
+export interface HeroBannerBlockSelect<T extends boolean = true> {
+  smallDescription?: T;
+  title?: T;
+  showBlueTitle?: T;
+  blueTitle?: T;
+  description?: T;
+  buttonLink?:
+    | T
+    | {
+        hasButtonLink?: T;
+        titleButton?: T;
+        link?: T;
+      };
+  image?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

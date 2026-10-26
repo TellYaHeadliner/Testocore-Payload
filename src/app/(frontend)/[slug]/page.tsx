@@ -78,16 +78,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       {/* {decodedSlug === 'home' && <HeroBannner />} */}
-      <HeroBannner />
-      <WhyChooseUsBlock />
-      <CouldHTBRFY />
-      <ReviewBlock />
-      <Component_1 />
-      <HowWDHI />
-      <CTA_1 />
-      <FAQBlock />
-      <CTABlueBg />
-      {/* <RenderBlocks blocks={layout} /> */}
+
+      <RenderBlocks blocks={layout} />
     </article>
   )
 }
