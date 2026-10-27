@@ -12,6 +12,16 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Page } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+import { authenticated } from '@/access/authenticated'
+import {
+  defaultValue,
+  hidden,
+  label,
+  name,
+  placeholder,
+  required,
+  width,
+} from '@/blocks/Form/fieldConfig'
 
 const generateTitle: GenerateTitle<Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
@@ -57,27 +67,109 @@ export const plugins: Plugin[] = [
   formBuilderPlugin({
     fields: {
       payment: false,
-    },
-    formOverrides: {
-      fields: ({ defaultFields }) => {
-        return defaultFields.map((field) => {
-          if ('name' in field && field.name === 'confirmationMessage') {
-            return {
-              ...field,
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    FixedToolbarFeature(),
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                  ]
-                },
-              }),
-            }
-          }
-          return field
-        })
+      text: {
+        labels: {
+          singular: 'Single-line Text',
+          plural: 'Single-line Text',
+        },
+        fields: [
+          {
+            type: 'row',
+            fields: [name, label],
+          },
+          {
+            type: 'row',
+            fields: [placeholder, defaultValue],
+          },
+          {
+            type: 'row',
+            fields: [width],
+          },
+          {
+            type: 'row',
+            fields: [required, hidden],
+          },
+        ],
       },
+      textarea: {
+        fields: [
+          { type: 'row', fields: [name, label] },
+          { type: 'row', fields: [placeholder] },
+          { type: 'row', fields: [required, hidden] },
+        ],
+      },
+      select: {
+        fields: [
+          { type: 'row', fields: [name, label] },
+          { type: 'row', fields: [placeholder, defaultValue] },
+          { type: 'row', fields: [width] },
+          {
+            name: 'options',
+            type: 'array',
+            label: 'Options',
+            fields: [
+              {
+                type: 'row',
+                fields: [
+                  { name: 'label', type: 'text', label: 'Label', required: true },
+                  { name: 'value', type: 'text', label: 'Value', required: true },
+                ],
+              },
+            ],
+          },
+          { type: 'row', fields: [required, hidden] },
+        ],
+      },
+      email: {
+        fields: [
+          { type: 'row', fields: [name, label] },
+          { type: 'row', fields: [placeholder] },
+          { type: 'row', fields: [required, hidden] },
+        ],
+      },
+      message: true,
+      number: {
+        fields: [
+          { type: 'row', fields: [name, label] },
+          {
+            type: 'row',
+            fields: [
+              width,
+              { name: 'defaultValue', type: 'number', label: 'Default Value' },
+            ],
+          },
+          { type: 'row', fields: [required, hidden] },
+          { type: 'row', fields: [placeholder]}
+        ],
+      },
+    },
+    redirectRelationships: ['pages'],
+    formOverrides: {
+      slug: 'Forms',
+      admin: {
+        group: 'Forms',
+      },
+      access: {
+        update: authenticated,
+      },
+      fields: ({ defaultFields }) => [
+        ...defaultFields,
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Description',
+        },
+        {
+          name: 'hubspotID',
+          type: 'text',
+          label: 'HubSpot ID',
+        },
+        {
+          name: 'requireRecapcha',
+          label: 'Require reCAPCHA',
+          type: 'checkbox',
+        },
+      ],
     },
   }),
   searchPlugin({

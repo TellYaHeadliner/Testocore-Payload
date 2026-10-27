@@ -16,6 +16,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug';
 import { Banner } from '@/blocks/HeroBannner/config';
+import { FormBlock } from '@/blocks/Form/config';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -64,7 +65,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [Banner],
+      blocks: [Banner, FormBlock],
     }
   ],
   hooks: {
