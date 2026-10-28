@@ -161,7 +161,7 @@ export interface Page {
    * Auto-generated from the title if left blank.
    */
   slug: string;
-  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock)[] | null;
+  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock | H4Block)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -574,6 +574,33 @@ export interface ReviewBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "H4Block".
+ */
+export interface H4Block {
+  titleGroup: {
+    title: string;
+    hasBlueTitle?: boolean | null;
+    blueTitle?: string | null;
+    description?: string | null;
+  };
+  steps?:
+    | {
+        title?: string | null;
+        listOfContent?:
+          | {
+              content?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hwdhiblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -901,6 +928,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         'feature-block'?: T | FeatureBlockSelect<T>;
         'review-block'?: T | ReviewBlockSelect<T>;
+        hwdhiblock?: T | H4BlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -994,6 +1022,34 @@ export interface ReviewBlockSelect<T extends boolean = true> {
         id?: T;
       };
   description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "H4Block_select".
+ */
+export interface H4BlockSelect<T extends boolean = true> {
+  titleGroup?:
+    | T
+    | {
+        title?: T;
+        hasBlueTitle?: T;
+        blueTitle?: T;
+        description?: T;
+      };
+  steps?:
+    | T
+    | {
+        title?: T;
+        listOfContent?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

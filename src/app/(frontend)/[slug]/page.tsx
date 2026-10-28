@@ -12,7 +12,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { WhyChooseUsBlock } from '@/blocks/WhyChooseUs/Component';
+import { WhyChooseUsBlock } from '@/blocks/Form/Component';
 import { ReviewBlock } from '@/blocks/ReviewBlock/Component';
 import { HowWDHI } from '@/blocks/HowWDHI/Component';
 import { Component_1 } from '@/blocks/ContentBlock/Component_1';
