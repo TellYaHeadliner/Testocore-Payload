@@ -18,6 +18,7 @@ import { slugField } from '@/fields/slug';
 import { Banner } from '@/blocks/HeroBannner/config';
 import { FormBlock } from '@/blocks/Form/config';
 import { FeatureBlock } from '@/blocks/FeatureBlock/config';
+import { ReviewBlock } from '@/blocks/ReviewBlock/config';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -66,7 +67,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [Banner, FormBlock, FeatureBlock],
+      blocks: [Banner, FormBlock, FeatureBlock, ReviewBlock],
     }
   ],
   hooks: {

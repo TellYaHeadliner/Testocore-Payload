@@ -161,7 +161,7 @@ export interface Page {
    * Auto-generated from the title if left blank.
    */
   slug: string;
-  layout?: (HeroBannerBlock | FormBlock | FeatureBlock)[] | null;
+  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -558,6 +558,22 @@ export interface FeatureBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewBlock".
+ */
+export interface ReviewBlock {
+  listVideo?:
+    | {
+        video?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  description?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'review-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -884,6 +900,7 @@ export interface PagesSelect<T extends boolean = true> {
         'hero-banner'?: T | HeroBannerBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         'feature-block'?: T | FeatureBlockSelect<T>;
+        'review-block'?: T | ReviewBlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -962,6 +979,21 @@ export interface FeatureBlockSelect<T extends boolean = true> {
               link?: T;
             };
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewBlock_select".
+ */
+export interface ReviewBlockSelect<T extends boolean = true> {
+  listVideo?:
+    | T
+    | {
+        video?: T;
+        id?: T;
+      };
+  description?: T;
   id?: T;
   blockName?: T;
 }
