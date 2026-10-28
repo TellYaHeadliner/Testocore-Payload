@@ -161,7 +161,7 @@ export interface Page {
    * Auto-generated from the title if left blank.
    */
   slug: string;
-  layout?: (HeroBannerBlock | FormBlock)[] | null;
+  layout?: (HeroBannerBlock | FormBlock | FeatureBlock)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -508,6 +508,56 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureBlock".
+ */
+export interface FeatureBlock {
+  /**
+   * Eyebrow in head title
+   */
+  eyebrow: string;
+  /**
+   * Title of section
+   */
+  title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  benefit?:
+    | {
+        icon: string | Media;
+        title: string;
+        id?: string | null;
+      }[]
+    | null;
+  hasCTA?: boolean | null;
+  CTABlock?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    hasButton?: boolean | null;
+    buttonLink?: {
+      title: string;
+      link: string;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'feature-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -833,6 +883,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         'hero-banner'?: T | HeroBannerBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        'feature-block'?: T | FeatureBlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -878,6 +929,39 @@ export interface FormBlockSelect<T extends boolean = true> {
         id?: T;
       };
   disclaimer?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureBlock_select".
+ */
+export interface FeatureBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  description?: T;
+  benefit?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        id?: T;
+      };
+  hasCTA?: T;
+  CTABlock?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        hasButton?: T;
+        buttonLink?:
+          | T
+          | {
+              title?: T;
+              link?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }

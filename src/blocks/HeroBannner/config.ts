@@ -1,4 +1,3 @@
-import { describe } from 'vitest'
 import type { Block } from 'payload'
 
 export const Banner: Block = {
