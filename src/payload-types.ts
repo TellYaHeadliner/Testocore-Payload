@@ -161,7 +161,7 @@ export interface Page {
    * Auto-generated from the title if left blank.
    */
   slug: string;
-  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock | H4Block)[] | null;
+  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock | H4Block | FAQBlock)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -601,6 +601,23 @@ export interface H4Block {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQBlock".
+ */
+export interface FAQBlock {
+  title: string;
+  questions?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Faqblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -929,6 +946,7 @@ export interface PagesSelect<T extends boolean = true> {
         'feature-block'?: T | FeatureBlockSelect<T>;
         'review-block'?: T | ReviewBlockSelect<T>;
         hwdhiblock?: T | H4BlockSelect<T>;
+        Faqblock?: T | FAQBlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1048,6 +1066,22 @@ export interface H4BlockSelect<T extends boolean = true> {
               content?: T;
               id?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQBlock_select".
+ */
+export interface FAQBlockSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
         id?: T;
       };
   id?: T;
