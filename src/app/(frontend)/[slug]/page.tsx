@@ -7,7 +7,6 @@ import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 
 import { HeroBannner } from '@/blocks/HeroBannner/Component'
-import { CouldHTBRFY } from '@/blocks/CouldHTBRFY/Component'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
@@ -64,7 +63,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
 
 
-  if (!page) {
+  if (!page && decodedSlug !== 'home') {
     return <PayloadRedirects url={url} />
   }
 
@@ -72,14 +71,22 @@ export default async function Page({ params: paramsPromise }: Args) {
   return (
     <article>
       <PageClient />
+      
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      {/* {decodedSlug === 'home' && <HeroBannner />} */}
+      {decodedSlug === 'home' && <HeroBannner />}
+      
+      <RenderBlocks blocks={page?.layout ?? []} />
 
-      <RenderBlocks blocks={layout} />
+      {decodedSlug === 'home' && (
+        <>
+          <CTABlueBg />
+          <CTA_1 />
+        </>
+      )}
     </article>
   )
 }

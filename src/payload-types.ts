@@ -161,7 +161,7 @@ export interface Page {
    * Auto-generated from the title if left blank.
    */
   slug: string;
-  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock | H4Block | FAQBlock)[] | null;
+  layout?: (HeroBannerBlock | FormBlock | FeatureBlock | ReviewBlock | H4Block | FAQBlock | CTABlueBlock)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -618,6 +618,43 @@ export interface FAQBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlueBlock".
+ */
+export interface CTABlueBlock {
+  /**
+   * Image left of CTA
+   */
+  imageLeft?: (string | null) | Media;
+  eyebrow?: string | null;
+  title: string;
+  hasBlueTitle?: boolean | null;
+  blueTitle?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  buttonLink?: {
+    hasButtonLink?: boolean | null;
+    titleButton?: string | null;
+    link?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Ctablueblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -947,6 +984,7 @@ export interface PagesSelect<T extends boolean = true> {
         'review-block'?: T | ReviewBlockSelect<T>;
         hwdhiblock?: T | H4BlockSelect<T>;
         Faqblock?: T | FAQBlockSelect<T>;
+        Ctablueblock?: T | CTABlueBlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1083,6 +1121,27 @@ export interface FAQBlockSelect<T extends boolean = true> {
         question?: T;
         answer?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlueBlock_select".
+ */
+export interface CTABlueBlockSelect<T extends boolean = true> {
+  imageLeft?: T;
+  eyebrow?: T;
+  title?: T;
+  hasBlueTitle?: T;
+  blueTitle?: T;
+  content?: T;
+  buttonLink?:
+    | T
+    | {
+        hasButtonLink?: T;
+        titleButton?: T;
+        link?: T;
       };
   id?: T;
   blockName?: T;

@@ -21,6 +21,7 @@ import { FeatureBlock } from '@/blocks/FeatureBlock/config';
 import { ReviewBlock } from '@/blocks/ReviewBlock/config';
 import { HWDHIBlock } from '@/blocks/HowWDHI/config';
 import { FAQBlock } from '@/blocks/FAQBlock/config';
+import { CTABlueBlock } from '@/blocks/CTABlueBgBlock/config';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -69,7 +70,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [Banner, FormBlock, FeatureBlock, ReviewBlock, HWDHIBlock, FAQBlock],
+      blocks: [Banner, FormBlock, FeatureBlock, ReviewBlock, HWDHIBlock, FAQBlock, CTABlueBlock],
     }
   ],
   hooks: {
