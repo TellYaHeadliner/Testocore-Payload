@@ -98,4 +98,11 @@ export default buildConfig({
       InlineToolbarFeature(),
     ],
   }),
+
+  // GraphQL
+  graphQL: {
+    schemaOutputFile: "/src/graphql/schema.graphql",
+    disable: false,
+    disablePlaygroundInProduction: false, 
+  },  
 })
